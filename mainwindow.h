@@ -6,8 +6,9 @@
 #include<QPushButton>
 #include<QVBoxLayout>
 #include<QWidget>
-
-
+#include<QGraphicsView>
+#include<QGraphicsTextItem>
+#include "BinarySearchTree.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,7 +24,16 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void addNodeToScene();
+
 private:
     Ui::MainWindow *ui;
+    QLineEdit* inputNodeEdit;
+    QPushButton* addNodeBtn;
+    QGraphicsScene* scene;
+    QGraphicsEllipseItem* previousNode;
+    BinarySearchTree<int> binarySearchTree;
+
 };
 #endif // MAINWINDOW_H

@@ -33,8 +33,9 @@ public:
         this->root = nullptr;
     }
 
-    void insert(const T& value) {
+    TreeNode<int>* insert(const T& value) {
         root = insert(root, value);
+        return root;
     }
 
     int countNodesWithTwoChildren() {
@@ -42,6 +43,8 @@ public:
         inorderTraversal(root, count);
         return count;
     }
+
+    TreeNode<T>* getRoot() const{return root;}
 };
 
 #endif // BINARYSEARCHTREE_H
