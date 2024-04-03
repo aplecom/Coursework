@@ -33,9 +33,8 @@ public:
         this->root = nullptr;
     }
 
-    TreeNode<int>* insert(const T& value) {
+    void insert(const T& value) {
         root = insert(root, value);
-        return root;
     }
 
     int countNodesWithTwoChildren() {

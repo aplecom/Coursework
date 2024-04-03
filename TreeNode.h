@@ -6,8 +6,6 @@ class TreeNode {
 private:
     TreeNode<T> *left;
     TreeNode<T> *right;
-    qreal x;
-    qreal y;
 public:
     T data;
 
@@ -16,19 +14,12 @@ public:
         this->data = item;
         this->left = lptr;
         this->right = rptr;
-        this->x = 0;
-        this->y = 0;
     }
 
     TreeNode<T>* getLeft() const{return left;}
     TreeNode<T>* getRight() const{return right;}
     void setLeft(TreeNode<T>* lptr){left=lptr;}
     void setRight(TreeNode<T>* rptr){right=rptr;}
-    qreal getX() const{return x;}
-    qreal getY() const{return y;}
-    void setX(qreal newX){ x = newX;}
-    void setY(qreal newY){ y = newY; }
-
 
 };
 
