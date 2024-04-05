@@ -44,18 +44,31 @@ MainWindow::~MainWindow() {
 void MainWindow::addNodeToScene() {
     QString nodeValue = inputNodeEdit->text();
     int intNode = nodeValue.toInt();
+
     TreeNode<int>* newNode = binarySearchTree.insert(intNode);
-    int x = newNode->getX();
-    int y = newNode->getY();
-    int width = 50;
-    int height = 50;
+    int xNode = newNode->getX();
+    int yNode = newNode->getY();
+    int xNodeP = newNode->getPX();
+    int yNodeP = newNode->getPY();
 
-    QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(x, y, width, height);
+    QGraphicsLineItem* line;
+    QPen pen;
+    pen.setWidth(2);
+    pen.setColor(Qt::black);
 
+
+    int widthNode = 50;
+    int heightNode = 50;
+
+    QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(xNode, yNode, widthNode, heightNode);
     QGraphicsTextItem* numberNode = new QGraphicsTextItem(nodeValue);
+    line = new QGraphicsLineItem(xNodeP,yNodeP,xNode,yNode);
 
-    int centerX = x + width / 2;
-    int centerY = y + height / 2;
+
+
+
+    int centerX = xNode + widthNode / 2;
+    int centerY = yNode + heightNode / 2;
 
     QRectF textRect = numberNode->boundingRect();
     int textX = centerX - textRect.width() / 2;
@@ -65,6 +78,7 @@ void MainWindow::addNodeToScene() {
 
     scene->addItem(ellipse);
     scene->addItem(numberNode);
+    scene->addItem(line);
 }
 
 

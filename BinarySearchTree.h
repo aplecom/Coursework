@@ -9,17 +9,18 @@ private:
     TreeNode<T>* root;
     TreeNode<T>* newNode;
 
-    TreeNode<T>* insert(TreeNode<T>* node, const T& value, int parentX, int parentY) {
+
+    TreeNode<T>* insert(TreeNode<T>* node, const T& value, int parentX, int parentY,int pX,int pY) {
         if (node == nullptr)
         {
-            newNode = new TreeNode<T>(value,nullptr,nullptr,parentX,parentY);
+            newNode = new TreeNode<T>(value,nullptr,nullptr,parentX,parentY,pX,pY);
             return newNode;
         }
 
         if (value < node->data)
-            node->setLeft(insert(node->getLeft(), value,parentX-100,parentY+100));
+            node->setLeft(insert(node->getLeft(), value,parentX-100,parentY+100,parentX,parentY));
         else if (value > node->data)
-            node->setRight(insert(node->getRight(), value, parentX+100,parentY+100));
+            node->setRight(insert(node->getRight(), value, parentX+100,parentY+100,parentX,parentY));
 
         return node;
     }
@@ -42,10 +43,10 @@ public:
 
     TreeNode<int>* insert(const T& value) {
         if (root == nullptr){
-           root = insert(root, value, 100, 100);
+           root = insert(root, value, 100, 100,100,100);
         }
         else{
-            root = insert(root, value, root->getX(),root->getY());
+            root = insert(root, value, root->getX(),root->getY(),100,100);
         }
         return newNode;
     }
@@ -56,6 +57,7 @@ public:
         inorderTraversal(root, count);
         return count;
     }
+
 
     TreeNode<T>* getRoot() const{return root;}
 };

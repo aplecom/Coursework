@@ -8,6 +8,7 @@
 #include<QWidget>
 #include<QGraphicsView>
 #include<QGraphicsTextItem>
+#include<QGraphicsLineItem>
 #include "BinarySearchTree.h"
 
 
