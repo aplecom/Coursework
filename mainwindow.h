@@ -10,6 +10,7 @@
 #include<QGraphicsTextItem>
 #include "BinarySearchTree.h"
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -27,12 +28,12 @@ public:
 private slots:
     void addNodeToScene();
 
+
 private:
     Ui::MainWindow *ui;
     QLineEdit* inputNodeEdit;
     QPushButton* addNodeBtn;
     QGraphicsScene* scene;
-    QGraphicsEllipseItem* previousNode;
     BinarySearchTree<int> binarySearchTree;
 
 };

@@ -36,14 +36,38 @@ MainWindow::MainWindow(QWidget *parent)
 
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
-// Метод для добавления узла на сцену при нажатии на кнопку
-void MainWindow::addNodeToScene() {
 
+
+void MainWindow::addNodeToScene() {
+    QString nodeValue = inputNodeEdit->text();
+    int intNode = nodeValue.toInt();
+    TreeNode<int>* newNode = binarySearchTree.insert(intNode);
+    int x = newNode->getX();
+    int y = newNode->getY();
+    int width = 50;
+    int height = 50;
+
+    QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(x, y, width, height);
+
+    QGraphicsTextItem* numberNode = new QGraphicsTextItem(nodeValue);
+
+    int centerX = x + width / 2;
+    int centerY = y + height / 2;
+
+    QRectF textRect = numberNode->boundingRect();
+    int textX = centerX - textRect.width() / 2;
+    int textY = centerY - textRect.height() / 2;
+
+    numberNode->setPos(textX, textY);
+
+    scene->addItem(ellipse);
+    scene->addItem(numberNode);
 }
+
+
 
 
 
