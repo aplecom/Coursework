@@ -34,7 +34,6 @@ public:
     int getPX(){return pX;}
     int getPY(){return pY;}
 
-
 };
 
 #endif // TREENODE_H

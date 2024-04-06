@@ -9,6 +9,7 @@
 #include<QGraphicsView>
 #include<QGraphicsTextItem>
 #include<QGraphicsLineItem>
+#include<QStyle>
 #include "BinarySearchTree.h"
 
 
@@ -25,6 +26,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void setStyleButton(QPushButton* button);
+    void setStyleLineEdit(QLineEdit *lineEdit);
+    void setupGraphicsView(QGraphicsView *graphicsView);
 
 private slots:
     void addNodeToScene();

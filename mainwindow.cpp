@@ -3,7 +3,6 @@
 #include "BinarySearchTree.h"
 #include <QGraphicsEllipseItem>
 #include <QGraphicsTextItem>
-#include <cmath>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -13,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     inputNodeEdit = new QLineEdit(this);
     addNodeBtn = new QPushButton("Добавить", this);
+    setStyleButton(addNodeBtn);
+    setStyleLineEdit(inputNodeEdit);
 
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(inputNodeEdit);
@@ -22,7 +23,10 @@ MainWindow::MainWindow(QWidget *parent)
     addNodeWidget->setLayout(layout);
 
     scene = new QGraphicsScene(this);
+    scene->setBackgroundBrush(Qt::black);
     QGraphicsView* graphicsView = new QGraphicsView(scene, this);
+    graphicsView->setRenderHint(QPainter::Antialiasing);
+    setupGraphicsView(graphicsView);
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addWidget(addNodeWidget);
@@ -42,8 +46,8 @@ MainWindow::~MainWindow() {
 
 
 void MainWindow::addNodeToScene() {
-    int widthNode = 50;
-    int heightNode = 50;
+    int widthNode = 80;
+    int heightNode = 80;
 
     QString nodeValue = inputNodeEdit->text();
     int intNode = nodeValue.toInt();
@@ -69,10 +73,16 @@ void MainWindow::addNodeToScene() {
     QGraphicsLineItem* line = new QGraphicsLineItem(xNodeStart,yNodeStart,xNodeEnd,yNodeEnd);
 
     QPen pen;
-    pen.setWidth(1);
+    pen.setWidth(2);
     pen.setColor(Qt::white);
     line->setPen(pen);
+    pen.setColor(Qt::green);
+    ellipse->setPen(pen);
 
+    QFont font = numberNode->font();
+    font.setBold(true);
+    font.setPointSize(font.pointSize()+4);
+    numberNode->setFont(font);
 
     int centerX = xNode + widthNode / 2;
     int centerY = yNode + heightNode / 2;
@@ -89,8 +99,38 @@ void MainWindow::addNodeToScene() {
 
 }
 
+void MainWindow::setStyleButton(QPushButton *button) {
+    button->setStyleSheet("QPushButton {"
+                          "border-radius: 10px;"
+                          "padding: 10px;"
+                          "border: 2px solid orange;" // Цвет границы по умолчанию (красный)
+                          "color: white;"
+                          "}"
+                          "QPushButton:pressed {"
+                          "border: 2px solid yellow;" // Цвет фона при нажатии (серый)
 
+                          "}");
+}
 
+void MainWindow::setStyleLineEdit(QLineEdit *lineEdit) {
+    lineEdit->setStyleSheet("QLineEdit {"
+                            "border: 2px solid orange;"
+                            "border-radius: 10px;"
+                            "padding: 10px;"
+                            "color: white;"
+                            "background-color: black;"
+                            "}"
+                            "QLineEdit:hover {"
+                            "border: 2px solid yellow;"
+                            "}"
+                            );
+}
+
+void MainWindow::setupGraphicsView(QGraphicsView *graphicsView) {
+    graphicsView->setStyleSheet("QGraphicsView {"
+                                "border: 1px solid orange;"
+                                "}");
+}
 
 
 
