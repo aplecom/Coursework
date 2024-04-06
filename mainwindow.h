@@ -36,6 +36,7 @@ private:
     QPushButton* addNodeBtn;
     QGraphicsScene* scene;
     BinarySearchTree<int> binarySearchTree;
+    bool lineMove = false;
 
 };
 #endif // MAINWINDOW_H

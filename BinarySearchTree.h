@@ -10,17 +10,18 @@ private:
     TreeNode<T>* newNode;
 
 
-    TreeNode<T>* insert(TreeNode<T>* node, const T& value, int parentX, int parentY,int pX,int pY) {
+    TreeNode<T>* insert(TreeNode<T>* node, const T& value, int x, int y,int pX,int pY) {
         if (node == nullptr)
         {
-            newNode = new TreeNode<T>(value,nullptr,nullptr,parentX,parentY,pX,pY);
+
+            newNode = new TreeNode<T>(value,nullptr,nullptr,x,y,pX,pY);
             return newNode;
         }
 
         if (value < node->data)
-            node->setLeft(insert(node->getLeft(), value,parentX-100,parentY+100,parentX,parentY));
+            node->setLeft(insert(node->getLeft(), value,x-100,y+100,x,y));
         else if (value > node->data)
-            node->setRight(insert(node->getRight(), value, parentX+100,parentY+100,parentX,parentY));
+            node->setRight(insert(node->getRight(), value, x+100,y+100,x,y));
 
         return node;
     }

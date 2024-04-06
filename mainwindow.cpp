@@ -42,29 +42,36 @@ MainWindow::~MainWindow() {
 
 
 void MainWindow::addNodeToScene() {
+    int widthNode = 50;
+    int heightNode = 50;
+
     QString nodeValue = inputNodeEdit->text();
     int intNode = nodeValue.toInt();
 
     TreeNode<int>* newNode = binarySearchTree.insert(intNode);
     int xNode = newNode->getX();
     int yNode = newNode->getY();
-    int xNodeP = newNode->getPX();
-    int yNodeP = newNode->getPY();
-
-    QGraphicsLineItem* line;
-    QPen pen;
-    pen.setWidth(2);
-    pen.setColor(Qt::black);
-
-
-    int widthNode = 50;
-    int heightNode = 50;
 
     QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(xNode, yNode, widthNode, heightNode);
     QGraphicsTextItem* numberNode = new QGraphicsTextItem(nodeValue);
-    line = new QGraphicsLineItem(xNodeP,yNodeP,xNode,yNode);
 
+    int xNodeStart = newNode->getPX() + widthNode/2 ;
+    int yNodeStart = newNode->getPY() + heightNode;
+    int xNodeEnd = xNode + widthNode/2;
+    int yNodeEnd;
+    if(!lineMove){
+         yNodeEnd = yNode + heightNode;
+        lineMove = !lineMove;
+    }
+    else
+         yNodeEnd = yNode;
 
+    QGraphicsLineItem* line = new QGraphicsLineItem(xNodeStart,yNodeStart,xNodeEnd,yNodeEnd);
+
+    QPen pen;
+    pen.setWidth(1);
+    pen.setColor(Qt::white);
+    line->setPen(pen);
 
 
     int centerX = xNode + widthNode / 2;
@@ -76,9 +83,10 @@ void MainWindow::addNodeToScene() {
 
     numberNode->setPos(textX, textY);
 
+    scene->addItem(line);
     scene->addItem(ellipse);
     scene->addItem(numberNode);
-    scene->addItem(line);
+
 }
 
 
