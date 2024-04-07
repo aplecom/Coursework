@@ -9,17 +9,27 @@ private:
     TreeNode<T>* root;
     TreeNode<T>* newNode;
 
-    TreeNode<T>* insert(TreeNode<T>* node, const T& value, int x, int y,int pX,int pY) {
+
+    TreeNode<T>* insert(TreeNode<T>* node, const T& value, int x, int y,int pX,int pY,int offset,TreeNode<T>* parent) {
         if (node == nullptr)
         {
-            newNode = new TreeNode<T>(value,nullptr,nullptr,x,y,pX,pY);
+            newNode = new TreeNode<T>(value,nullptr,nullptr,x,y,pX,pY,offset);
+
+            if(parent!=nullptr){
+                //newNode->setDepth(parent->getDepth()+1);
+                newNode->setOffset(parent->getOffest()-50);
+            }
+
             return newNode;
         }
 
         if (value < node->data)
-            node->setLeft(insert(node->getLeft(), value,x-150,y+150,x,y));
-        else if (value > node->data)
-            node->setRight(insert(node->getRight(), value, x+150,y+150,x,y));
+        {
+            node->setLeft(insert(node->getLeft(), value,x-node->getOffest(),y+node->getOffest(),x,y,node->getOffest(),node));
+        }
+        else if (value > node->data){
+            node->setRight(insert(node->getRight(), value, x+node->getOffest(),y+node->getOffest(),x,y,node->getOffest(),node));
+        }
 
         return node;
     }
@@ -41,12 +51,10 @@ public:
     }
 
     TreeNode<int>* insert(const T& value) {
-        if (root == nullptr){
-            root = insert(root, value, 150, 150,150,150);
-        }
-        else{
-           root = insert(root, value, root->getX(),root->getY(),150,150);
-        }
+        if (root == nullptr)
+            root = insert(root, value, 1000, 1000,1000,1000,300,nullptr);
+        else
+            root = insert(root, value, root->getX(),root->getY(),0,0,root->getOffest(),root);
         return newNode;
     }
 

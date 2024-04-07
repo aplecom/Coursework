@@ -6,12 +6,12 @@ class TreeNode {
 private:
     TreeNode<T> *left;
     TreeNode<T> *right;
-    int x, y , pX , pY;
+    int x, y , pX , pY , offset, depth;
 public:
     T data;
 
     TreeNode(const T& item, TreeNode<T> *lptr = nullptr,
-             TreeNode<T> *rptr = nullptr, int x =0, int y =0, int pX = 0,int pY = 0){
+             TreeNode<T> *rptr = nullptr, int x =0, int y =0, int pX = 0,int pY = 0, int offset = 0){
         this->data = item;
         this->left = lptr;
         this->right = rptr;
@@ -19,6 +19,8 @@ public:
         this->y = y;
         this->pX = pX;
         this->pY = pY;
+        this->offset = offset;
+        this->depth = 0;
     }
 
     TreeNode<T>* getLeft() const{return left;}
@@ -30,10 +32,14 @@ public:
     int getY(){return y;}
     void setX(int newX){x=newX;}
     void setY(int newY){y=newY;}
+    void setOffset(int newOffset){offset=newOffset;}
+    void setDepth(int newDepth){depth=newDepth;}
 
     int getPX(){return pX;}
     int getPY(){return pY;}
 
+    int getOffest(){return offset;}
+    int getDepth(){return depth;};
 };
 
 #endif // TREENODE_H

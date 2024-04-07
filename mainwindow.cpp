@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "BinarySearchTree.h"
 #include <QGraphicsEllipseItem>
 #include <QGraphicsTextItem>
 
@@ -59,7 +58,7 @@ void MainWindow::addNodeToScene() {
     QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(xNode, yNode, widthNode, heightNode);
     QGraphicsTextItem* numberNode = new QGraphicsTextItem(nodeValue);
 
-    int xNodeStart = newNode->getPX() + widthNode/2 ;
+    int xNodeStart = newNode->getPX() + widthNode/2;
     int yNodeStart = newNode->getPY() + heightNode;
     int xNodeEnd = xNode + widthNode/2;
     int yNodeEnd;
