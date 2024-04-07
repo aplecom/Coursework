@@ -28,11 +28,11 @@ public:
     ~MainWindow();
     void setStyleButton(QPushButton* button);
     void setStyleLineEdit(QLineEdit *lineEdit);
-    void setupGraphicsView(QGraphicsView *graphicsView);
+    void setGraphicsView(QGraphicsView *graphicsView);
 
 private slots:
     void addNodeToScene();
-
+    int chekingInput(QString input);
 
 private:
     Ui::MainWindow *ui;

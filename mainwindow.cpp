@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     scene->setBackgroundBrush(Qt::black);
     QGraphicsView* graphicsView = new QGraphicsView(scene, this);
     graphicsView->setRenderHint(QPainter::Antialiasing);
-    setupGraphicsView(graphicsView);
+    setGraphicsView(graphicsView);
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addWidget(addNodeWidget);
@@ -49,7 +49,13 @@ void MainWindow::addNodeToScene() {
     int heightNode = 80;
 
     QString nodeValue = inputNodeEdit->text();
-    int intNode = nodeValue.toInt();
+    int intNode = chekingInput(nodeValue);;
+    if(intNode==0)
+    {
+        utilities::warning();
+        return;
+    }
+
 
     TreeNode<int>* newNode = binarySearchTree.insert(intNode);
     int xNode = newNode->getX();
@@ -125,10 +131,17 @@ void MainWindow::setStyleLineEdit(QLineEdit *lineEdit) {
                             );
 }
 
-void MainWindow::setupGraphicsView(QGraphicsView *graphicsView) {
+void MainWindow::setGraphicsView(QGraphicsView *graphicsView) {
     graphicsView->setStyleSheet("QGraphicsView {"
                                 "border: 1px solid orange;"
                                 "}");
+}
+
+int MainWindow::chekingInput(QString nodeValue){
+    int value = nodeValue.toInt();
+    if(value<=0)
+         return 0;
+    return value;
 }
 
 

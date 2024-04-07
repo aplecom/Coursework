@@ -6,12 +6,14 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    utilities.cpp
 
 HEADERS += \
     BinarySearchTree.h \
     TreeNode.h \
-    mainwindow.h
+    mainwindow.h \
+    utilities.h
 
 FORMS += \
     mainwindow.ui

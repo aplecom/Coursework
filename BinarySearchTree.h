@@ -2,6 +2,8 @@
 #define BINARYSEARCHTREE_H
 
 #include "TreeNode.h"
+#include"utilities.h"
+
 
 template<typename T>
 class BinarySearchTree {
@@ -30,6 +32,9 @@ private:
         else if (value > node->data){
             node->setRight(insert(node->getRight(), value, x+node->getOffest(),y+node->getOffest(),x,y,node->getOffest(),node));
         }
+        else if(value==node->data){
+            utilities::warning();
+        }
 
         return node;
     }
@@ -42,6 +47,7 @@ private:
             inorderTraversal(node->getRight(), count);
         }
     }
+
 
 
 public:
@@ -64,6 +70,7 @@ public:
         inorderTraversal(root, count);
         return count;
     }
+
 
 
     TreeNode<T>* getRoot() const{return root;}
