@@ -4,7 +4,9 @@
 class utilities
 {
 public:
-    static void warning();
+    static void warningRange();
+    static void warningRepeat();
+    static bool w;
 };
 
 #endif // UTILITIES_H

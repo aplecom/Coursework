@@ -6,7 +6,7 @@ class TreeNode {
 private:
     TreeNode<T> *left;
     TreeNode<T> *right;
-    int x, y , pX , pY , offset, depth;
+    int x, y , pX , pY , offset;
 public:
     T data;
 
@@ -20,7 +20,6 @@ public:
         this->pX = pX;
         this->pY = pY;
         this->offset = offset;
-        this->depth = 0;
     }
 
     TreeNode<T>* getLeft() const{return left;}
@@ -28,18 +27,19 @@ public:
     void setLeft(TreeNode<T>* lptr){left=lptr;}
     void setRight(TreeNode<T>* rptr){right=rptr;}
 
-    int getX(){return x;}
-    int getY(){return y;}
+
     void setX(int newX){x=newX;}
     void setY(int newY){y=newY;}
     void setOffset(int newOffset){offset=newOffset;}
-    void setDepth(int newDepth){depth=newDepth;}
 
+
+    int getX(){return x;}
+    int getY(){return y;}
     int getPX(){return pX;}
     int getPY(){return pY;}
 
     int getOffest(){return offset;}
-    int getDepth(){return depth;};
+
 };
 
 #endif // TREENODE_H

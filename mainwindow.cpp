@@ -52,12 +52,18 @@ void MainWindow::addNodeToScene() {
     int intNode = chekingInput(nodeValue);;
     if(intNode==0)
     {
-        utilities::warning();
+        utilities::warningRange();
+
         return;
     }
 
 
     TreeNode<int>* newNode = binarySearchTree.insert(intNode);
+    if(utilities::w==true){
+        utilities::w = false;
+        return;
+    }
+
     int xNode = newNode->getX();
     int yNode = newNode->getY();
 

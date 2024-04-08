@@ -17,8 +17,8 @@ private:
         {
             newNode = new TreeNode<T>(value,nullptr,nullptr,x,y,pX,pY,offset);
 
+
             if(parent!=nullptr){
-                //newNode->setDepth(parent->getDepth()+1);
                 newNode->setOffset(parent->getOffest()-50);
             }
 
@@ -33,7 +33,7 @@ private:
             node->setRight(insert(node->getRight(), value, x+node->getOffest(),y+node->getOffest(),x,y,node->getOffest(),node));
         }
         else if(value==node->data){
-            utilities::warning();
+            utilities::warningRepeat();
         }
 
         return node;
