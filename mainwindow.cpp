@@ -8,8 +8,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    timer = new QTimer(this);
-    timer->setInterval(2000);
 
     inputNodeEdit = new QLineEdit(this);
     addNodeBtn = new QPushButton("Добавить", this);

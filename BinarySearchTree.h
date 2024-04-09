@@ -3,6 +3,7 @@
 
 #include "TreeNode.h"
 #include"utilities.h"
+#include<QTimer>
 
 template<typename T>
 class BinarySearchTree{
@@ -43,7 +44,8 @@ private:
             inorderTraversal(node->getLeft(), count, scene);
             if (node->getLeft() != nullptr && node->getRight() != nullptr){
                 count++;
-                utilities::draw(node->getX(),node->getY(),80,80,scene);
+                QTimer::singleShot(1000 * count, [=](){
+                    utilities::draw(node->getX(),node->getY(),80,80,scene);});
             }
             inorderTraversal(node->getRight(), count,scene);
         }

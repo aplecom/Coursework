@@ -10,7 +10,6 @@
 #include<QGraphicsTextItem>
 #include<QGraphicsLineItem>
 #include<QStyle>
-#include<QTimer>
 #include "BinarySearchTree.h"
 
 
@@ -45,7 +44,6 @@ private:
     bool lineMove = false;
     QPushButton* searchBtn;
     int chekingInput(QString input);
-    QTimer* timer;
 
 };
 #endif // MAINWINDOW_H
