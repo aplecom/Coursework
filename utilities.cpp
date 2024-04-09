@@ -1,5 +1,5 @@
 #include "utilities.h"
-#include <QMessageBox>
+
 
 bool utilities::w = false;
 
@@ -9,5 +9,11 @@ void utilities::warningRange() {
 void utilities::warningRepeat() {
     QMessageBox::critical(nullptr,"Повторение узла","Требование:\n *тип данных: int\n *больше нуля\n *без повторений");
     w = true;
+}
+void utilities:: draw(int x,int y, int widthNode  , int heightNode, QGraphicsScene* scene ){
+    QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(x,y,widthNode,heightNode);
+    QBrush brush(Qt::lightGray);
+    ellipse->setBrush(brush);
+    scene->addItem(ellipse);
 }
 

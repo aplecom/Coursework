@@ -4,9 +4,9 @@
 #include "TreeNode.h"
 #include"utilities.h"
 
-
 template<typename T>
-class BinarySearchTree {
+class BinarySearchTree{
+
 private:
     TreeNode<T>* root;
     TreeNode<T>* newNode;
@@ -16,12 +16,9 @@ private:
         if (node == nullptr)
         {
             newNode = new TreeNode<T>(value,nullptr,nullptr,x,y,pX,pY,offset);
-
-
             if(parent!=nullptr){
                 newNode->setOffset(parent->getOffest()-50);
             }
-
             return newNode;
         }
 
@@ -29,9 +26,11 @@ private:
         {
             node->setLeft(insert(node->getLeft(), value,x-node->getOffest(),y+node->getOffest(),x,y,node->getOffest(),node));
         }
+
         else if (value > node->data){
             node->setRight(insert(node->getRight(), value, x+node->getOffest(),y+node->getOffest(),x,y,node->getOffest(),node));
         }
+
         else if(value==node->data){
             utilities::warningRepeat();
         }
@@ -39,12 +38,14 @@ private:
         return node;
     }
 
-    void inorderTraversal(TreeNode<T>* node, int& count) {
+    void inorderTraversal(TreeNode<T>* node, int& count,QGraphicsScene* scene) {
         if (node != nullptr) {
-            inorderTraversal(node->getLeft(), count);
-            if (node->getLeft() != nullptr && node->getRight() != nullptr)
+            inorderTraversal(node->getLeft(), count, scene);
+            if (node->getLeft() != nullptr && node->getRight() != nullptr){
                 count++;
-            inorderTraversal(node->getRight(), count);
+                utilities::draw(node->getX(),node->getY(),80,80,scene);
+            }
+            inorderTraversal(node->getRight(), count,scene);
         }
     }
 
@@ -65,15 +66,22 @@ public:
     }
 
 
-    int countNodesWithTwoChildren() {
-        int count = 0;
-        inorderTraversal(root, count);
-        return count;
-    }
+    // void countNodesWithTwoChildren() {
+    //     int count = 0;
+    //     inorderTraversal(root, count);
+    //     //return count;
+    // }
 
 
 
     TreeNode<T>* getRoot() const{return root;}
+
+
+    void countNodesWithTwoChildren(QGraphicsScene* scene) {
+        int count = 0;
+        inorderTraversal(root, count,scene);
+    }
+
 };
 
 #endif // BINARYSEARCHTREE_H

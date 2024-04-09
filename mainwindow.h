@@ -10,6 +10,7 @@
 #include<QGraphicsTextItem>
 #include<QGraphicsLineItem>
 #include<QStyle>
+#include<QTimer>
 #include "BinarySearchTree.h"
 
 
@@ -32,7 +33,8 @@ public:
 
 private slots:
     void addNodeToScene();
-    int chekingInput(QString input);
+
+    void countNodesWithTwoChildren();
 
 private:
     Ui::MainWindow *ui;
@@ -41,6 +43,9 @@ private:
     QGraphicsScene* scene;
     BinarySearchTree<int> binarySearchTree;
     bool lineMove = false;
+    QPushButton* searchBtn;
+    int chekingInput(QString input);
+    QTimer* timer;
 
 };
 #endif // MAINWINDOW_H

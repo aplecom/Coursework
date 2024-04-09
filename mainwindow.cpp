@@ -8,15 +8,20 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    timer = new QTimer(this);
+    timer->setInterval(2000);
 
     inputNodeEdit = new QLineEdit(this);
     addNodeBtn = new QPushButton("Добавить", this);
+    searchBtn = new QPushButton("Поиск",this);
     setStyleButton(addNodeBtn);
+    setStyleButton(searchBtn);
     setStyleLineEdit(inputNodeEdit);
 
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(inputNodeEdit);
     layout->addWidget(addNodeBtn);
+    layout->addWidget(searchBtn);
 
     QWidget* addNodeWidget = new QWidget(this);
     addNodeWidget->setLayout(layout);
@@ -36,6 +41,8 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(centralWidget);
 
     connect(addNodeBtn,&QPushButton::clicked,this,&MainWindow::addNodeToScene);
+    connect(searchBtn, &QPushButton::clicked, this,&MainWindow::countNodesWithTwoChildren);
+
 
 }
 
@@ -150,6 +157,10 @@ int MainWindow::chekingInput(QString nodeValue){
     return value;
 }
 
+
+void MainWindow::countNodesWithTwoChildren(){
+    binarySearchTree.countNodesWithTwoChildren(scene);
+}
 
 
 
