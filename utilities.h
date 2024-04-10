@@ -10,6 +10,8 @@ public:
     static void warningRepeat();
     static bool w;
     static void draw(int x,int y, int widthNode = 80 , int heightNode = 80,QGraphicsScene* scene = nullptr);
+    // static void deleteDraw(QGraphicsScene* scene);
+    // static std::vector<QGraphicsEllipseItem*> ellipseList;
 };
 
 #endif // UTILITIES_H

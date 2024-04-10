@@ -68,12 +68,6 @@ public:
     }
 
 
-    // void countNodesWithTwoChildren() {
-    //     int count = 0;
-    //     inorderTraversal(root, count);
-    //     //return count;
-    // }
-
 
 
     TreeNode<T>* getRoot() const{return root;}

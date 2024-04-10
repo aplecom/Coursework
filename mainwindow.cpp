@@ -41,7 +41,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(addNodeBtn,&QPushButton::clicked,this,&MainWindow::addNodeToScene);
     connect(searchBtn, &QPushButton::clicked, this,&MainWindow::countNodesWithTwoChildren);
 
-
 }
 
 MainWindow::~MainWindow() {
@@ -58,7 +57,6 @@ void MainWindow::addNodeToScene() {
     if(intNode==0)
     {
         utilities::warningRange();
-
         return;
     }
 
