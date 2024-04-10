@@ -155,6 +155,7 @@ int MainWindow::chekingInput(QString nodeValue){
 
 
 void MainWindow::countNodesWithTwoChildren(){
+    utilities::deleteDraw(scene);
     binarySearchTree.countNodesWithTwoChildren(scene);
 }
 

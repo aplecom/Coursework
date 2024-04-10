@@ -1,6 +1,8 @@
 #include "utilities.h"
 
 bool utilities::w = false;
+std::vector<QGraphicsEllipseItem*> ellipseList;
+
 
 void utilities::warningRange() {
     QMessageBox::critical(nullptr,"Неверный диапазон","Требование:\n *тип данных: int\n *больше нуля\n *без повторений");
@@ -11,7 +13,7 @@ void utilities::warningRepeat() {
 }
 void utilities:: draw(int x,int y, int widthNode  , int heightNode, QGraphicsScene* scene ){
     QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(x,y,widthNode,heightNode);
-    // ellipseList.push_back(ellipse);
+    ellipseList.push_back(ellipse);
     QLinearGradient gradient(x, y, x + widthNode, y + heightNode);
     gradient.setColorAt(0, QColor(211, 211, 211, 100));
     gradient.setColorAt(1, QColor(211, 211, 211, 255));
@@ -22,13 +24,13 @@ void utilities:: draw(int x,int y, int widthNode  , int heightNode, QGraphicsSce
     ellipse->setPen(pen);
     scene->addItem(ellipse);
 }
-// void utilities::deleteDraw(QGraphicsScene* scene){
-//     for(auto ellipse:ellipseList)
-//     {
-//        scene->removeItem(ellipse);
-//        delete ellipse;
-//     }
-//     ellipseList.clear();
-// }
+void utilities::deleteDraw(QGraphicsScene* scene){
+    for(auto ellipse:ellipseList)
+    {
+       scene->removeItem(ellipse);
+       delete ellipse;
+    }
+    ellipseList.clear();
+}
 
 
