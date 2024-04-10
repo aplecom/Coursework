@@ -11,10 +11,11 @@ void utilities::warningRepeat() {
     QMessageBox::critical(nullptr,"Повторение узла","Требование:\n *тип данных: int\n *больше нуля\n *без повторений");
     w = true;
 }
-void utilities:: draw(int x,int y, int widthNode  , int heightNode, QGraphicsScene* scene ){
-    QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(x,y,widthNode,heightNode);
+void utilities:: draw(int x,int y, QGraphicsScene* scene ){
+    QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(x,y,80,80);
     ellipseList.push_back(ellipse);
-    QLinearGradient gradient(x, y, x + widthNode, y + heightNode);
+
+    QLinearGradient gradient(x, y, x + 80, y + 80);
     gradient.setColorAt(0, QColor(211, 211, 211, 100));
     gradient.setColorAt(1, QColor(211, 211, 211, 255));
     QBrush brush(gradient);

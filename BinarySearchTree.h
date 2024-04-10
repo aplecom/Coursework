@@ -39,16 +39,17 @@ private:
         return node;
     }
 
-    void inorderTraversal(TreeNode<T>* node, int& count,QGraphicsScene* scene) {
+    int inorderTraversal(TreeNode<T>* node, int& count,QGraphicsScene* scene) {
         if (node != nullptr) {
             inorderTraversal(node->getLeft(), count, scene);
             if (node->getLeft() != nullptr && node->getRight() != nullptr){
                 count++;
                 QTimer::singleShot(1000 * count, [=](){
-                    utilities::draw(node->getX(),node->getY(),80,80,scene);});
+                    utilities::draw(node->getX(),node->getY(),scene);});
             }
             inorderTraversal(node->getRight(), count,scene);
         }
+        return count;
     }
 
 
@@ -74,8 +75,14 @@ public:
 
 
     void countNodesWithTwoChildren(QGraphicsScene* scene) {
+        QString message = "Узлов не найдено";
         int count = 0;
-        inorderTraversal(root, count,scene);
+        count = inorderTraversal(root, count,scene);
+        if(count!=0)
+            message = "Ответ:" + QString::number(count);
+        QMessageBox msgBox;
+        msgBox.setText(message);
+        msgBox.exec();
     }
 
 };

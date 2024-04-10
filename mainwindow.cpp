@@ -117,11 +117,11 @@ void MainWindow::setStyleButton(QPushButton *button) {
     button->setStyleSheet("QPushButton {"
                           "border-radius: 10px;"
                           "padding: 10px;"
-                          "border: 2px solid orange;" // Цвет границы по умолчанию (красный)
+                          "border: 2px solid orange;"
                           "color: white;"
                           "}"
                           "QPushButton:pressed {"
-                          "border: 2px solid yellow;" // Цвет фона при нажатии (серый)
+                          "border: 2px solid yellow;"
 
                           "}");
 }
