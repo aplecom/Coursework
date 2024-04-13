@@ -11,7 +11,7 @@ void utilities::warningRepeat() {
     QMessageBox::critical(nullptr,"Повторение узла","Требование:\n *тип данных: int\n *больше нуля\n *без повторений");
     w = true;
 }
-void utilities:: draw(int x,int y, QGraphicsScene* scene ){
+void utilities:: drawSubsidiaries(int x,int y, QGraphicsScene* scene ){
     QGraphicsEllipseItem* ellipse = new QGraphicsEllipseItem(x,y,80,80);
     ellipseList.push_back(ellipse);
 
@@ -25,7 +25,7 @@ void utilities:: draw(int x,int y, QGraphicsScene* scene ){
     ellipse->setPen(pen);
     scene->addItem(ellipse);
 }
-void utilities::deleteDraw(QGraphicsScene* scene){
+void utilities::deleteDrawSubsidiaries(QGraphicsScene* scene){
     for(auto ellipse:ellipseList)
     {
        scene->removeItem(ellipse);

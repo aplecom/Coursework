@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     scene = new QGraphicsScene(this);
     scene->setBackgroundBrush(Qt::black);
-    QGraphicsView* graphicsView = new QGraphicsView(scene, this);
+    graphicsView = new QGraphicsView(scene, this);
     graphicsView->setRenderHint(QPainter::Antialiasing);
     setGraphicsView(graphicsView);
 
@@ -160,19 +160,16 @@ int MainWindow::chekingInput(QString nodeValue){
 
 
 void MainWindow::countNodesWithTwoChildren(){
-    utilities::deleteDraw(scene);
+    utilities::deleteDrawSubsidiaries(scene);
     binarySearchTree.countNodesWithTwoChildren(scene);
 }
 
 
 void MainWindow::sceneClear(){
-    auto items = scene->items();
-    for(QGraphicsItem* item: items){
-         scene->removeItem(item);
-         delete item;
-    }
-
+    utilities::deleteDrawSubsidiaries(scene);
+    scene->clear();
     binarySearchTree.clear();
+
     lineMove = 0;
 }
 

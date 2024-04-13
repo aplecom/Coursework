@@ -37,6 +37,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QGraphicsView* graphicsView;
     QLineEdit* inputNodeEdit;
     QPushButton* addNodeBtn;
     QGraphicsScene* scene;

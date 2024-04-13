@@ -45,7 +45,7 @@ private:
             if (node->getLeft() != nullptr && node->getRight() != nullptr){
                 count++;
                 QTimer::singleShot(1000 * count, [=](){
-                    utilities::draw(node->getX(),node->getY(),scene);});
+                    utilities::drawSubsidiaries(node->getX(),node->getY(),scene);});
             }
             inorderTraversal(node->getRight(), count,scene);
         }
