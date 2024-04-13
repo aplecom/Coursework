@@ -72,6 +72,7 @@ public:
 
 
     TreeNode<T>* getRoot() const{return root;}
+    TreeNode<T>* setRoot(TreeNode<T>* NewRoot){root=NewRoot;}
 
 
     void countNodesWithTwoChildren(QGraphicsScene* scene) {
@@ -83,6 +84,19 @@ public:
         QMessageBox msgBox;
         msgBox.setText(message);
         msgBox.exec();
+    }
+
+    void deleteTree(TreeNode<T>* node){
+        if(node==nullptr)
+            return;
+        deleteTree(node->getLeft());
+        deleteTree(node->getRight());
+        delete node;
+    }
+
+    void clear(){
+        deleteTree(getRoot());
+        root = nullptr;
     }
 
 };

@@ -32,8 +32,8 @@ public:
 
 private slots:
     void addNodeToScene();
-
     void countNodesWithTwoChildren();
+    void sceneClear();
 
 private:
     Ui::MainWindow *ui;
@@ -44,6 +44,8 @@ private:
     bool lineMove = false;
     QPushButton* searchBtn;
     int chekingInput(QString input);
+    QPushButton* deleteBtn;
+
 
 };
 #endif // MAINWINDOW_H

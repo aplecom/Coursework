@@ -8,18 +8,23 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    resize(1000,1000);
 
     inputNodeEdit = new QLineEdit(this);
     addNodeBtn = new QPushButton("Добавить", this);
     searchBtn = new QPushButton("Поиск",this);
+    deleteBtn = new QPushButton("Очитисть",this);
+
     setStyleButton(addNodeBtn);
     setStyleButton(searchBtn);
+    setStyleButton(deleteBtn);
     setStyleLineEdit(inputNodeEdit);
 
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(inputNodeEdit);
     layout->addWidget(addNodeBtn);
     layout->addWidget(searchBtn);
+    layout->addWidget(deleteBtn);
 
     QWidget* addNodeWidget = new QWidget(this);
     addNodeWidget->setLayout(layout);
@@ -40,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(addNodeBtn,&QPushButton::clicked,this,&MainWindow::addNodeToScene);
     connect(searchBtn, &QPushButton::clicked, this,&MainWindow::countNodesWithTwoChildren);
+    connect(deleteBtn,&QPushButton::clicked,this,&MainWindow::sceneClear);
 
 }
 
@@ -122,7 +128,6 @@ void MainWindow::setStyleButton(QPushButton *button) {
                           "}"
                           "QPushButton:pressed {"
                           "border: 2px solid yellow;"
-
                           "}");
 }
 
@@ -159,5 +164,16 @@ void MainWindow::countNodesWithTwoChildren(){
     binarySearchTree.countNodesWithTwoChildren(scene);
 }
 
+
+void MainWindow::sceneClear(){
+    auto items = scene->items();
+    for(QGraphicsItem* item: items){
+         scene->removeItem(item);
+         delete item;
+    }
+
+    binarySearchTree.clear();
+    lineMove = 0;
+}
 
 
