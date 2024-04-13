@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     inputNodeEdit = new QLineEdit(this);
     addNodeBtn = new QPushButton("Добавить", this);
     searchBtn = new QPushButton("Поиск",this);
-    deleteBtn = new QPushButton("Очитисть",this);
+    deleteBtn = new QPushButton("Очистить",this);
 
     setStyleButton(addNodeBtn);
     setStyleButton(searchBtn);
