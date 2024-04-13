@@ -81,9 +81,11 @@ public:
         count = inorderTraversal(root, count,scene);
         if(count!=0)
             message = "Ответ:" + QString::number(count);
+        QTimer::singleShot(1000 * count, [=](){
+
         QMessageBox msgBox;
         msgBox.setText(message);
-        msgBox.exec();
+        msgBox.exec();   });
     }
 
     void deleteTree(TreeNode<T>* node){
